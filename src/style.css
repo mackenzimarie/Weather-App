@@ -62,6 +62,10 @@ a {
   cursor: pointer;
   transition: ease-in-out 200ms;
   font-size: 30px;
+  position: relative;
+  bottom: 18px;
+  font-size: 20px;
+  padding: 0;
 }
 
 .units:hover {
