@@ -17,19 +17,21 @@ function formatAMPM(date) {
 function showAllWeather(response) {
   console.log(response);
   let cityName = document.querySelector("#city");
-  cityName.innerHTML = response.data.name;
-
   let temperature = document.querySelector("#temperature");
-  temperature.innerHTML = Math.round(response.data.main.temp);
-
   let weather = document.querySelector("#weather");
-  weather.innerHTML = response.data.weather[0].main;
-
   let humidity = document.querySelector("#humidity");
-  humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
-
   let wind = document.querySelector("#wind");
+  let icon = document.querySelector("#icon");
+
+  cityName.innerHTML = response.data.name;
+  temperature.innerHTML = Math.round(response.data.main.temp);
+  weather.innerHTML = response.data.weather[0].description;
+  humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind: ${response.data.main.humidity}mph`;
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 
   dayAndTime.innerHTML = `${day} ${formatAMPM(new Date())}`;
 }
