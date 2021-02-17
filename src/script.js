@@ -18,8 +18,10 @@ function showAllWeather(response) {
   let wind = document.querySelector("#wind");
   let icon = document.querySelector("#icon");
 
+  fahrenheitTemperature = response.data.main.temp;
+
   cityName.innerHTML = response.data.name;
-  temperature.innerHTML = Math.round(response.data.main.temp);
+  temperature.innerHTML = Math.round(fahrenheitTemperature);
   weather.innerHTML = response.data.weather[0].description;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind: ${response.data.main.humidity}mph`;
@@ -91,10 +93,25 @@ dayAndTime.innerHTML = `${day} ${formatAMPM(new Date())}`;
 function changeToC(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  let temperature = temperatureElement.innerHTML;
-  temperatureElement.innerHTML = Math.round(((temperature - 32) * 5) / 9);
+  fahrenheitLink.classList.remove("active");
+  celciusLink.classList.add("active");
+  let celciusTemperature = Math.round(((fahrenheitTemperature - 32) * 5) / 9);
+  temperatureElement.innerHTML = celciusTemperature;
 }
 
-let celciusLink = document.querySelector("#celcius");
+function changeToF(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  fahrenheitLink.classList.add("active");
+  celciusLink.classList.remove("active");
 
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+let fahrenheitTemperature = null;
+
+let celciusLink = document.querySelector("#celcius");
 celciusLink.addEventListener("click", changeToC);
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", changeToF);

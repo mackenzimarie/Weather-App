@@ -175,3 +175,12 @@ h3 {
   flex-direction: column;
   justify-content: center;
 }
+
+.details .active {
+  color: white;
+  cursor: default;
+}
+
+.seperator {
+  color: #678a91;
+}
