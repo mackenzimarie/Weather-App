@@ -30,7 +30,7 @@ function showAllWeather(response) {
   wind.innerHTML = `Wind: ${response.data.main.humidity}mph`;
   icon.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 
   dayAndTime.innerHTML = `${day} ${formatAMPM(new Date())}`;
