@@ -1,0 +1,161 @@
+body {
+  display: block;
+  max-width: 500px;
+  margin: 0 auto;
+  border: black solid 1px;
+  box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 0;
+  font-family: "Baloo Thambi 2", Arial, Helvetica, sans-serif;
+  color: white;
+  text-shadow: 2px 2px rgb(0, 0, 0, 0.5);
+}
+
+p {
+  text-align: center;
+  padding-bottom: 20px;
+  font-size: 50px;
+  margin-top: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #678a91;
+}
+
+.container {
+  background-image: url("https://images.pexels.com/photos/3941855/pexels-photo-3941855.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  display: block;
+  border-radius: 10px;
+  padding-top: 10px;
+}
+
+.search {
+  display: block;
+  border-radius: 10px;
+  padding: 0 20px;
+  position: static;
+  background: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  max-width: 475px;
+  font-weight: bold;
+  color: black;
+  text-shadow: none;
+}
+
+.results {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin: 0;
+  padding: 0px 20px 10px 20px;
+}
+
+.current {
+  font-size: 50px;
+  display: block;
+  float: left;
+  padding: 10px 30px 10px 60px;
+  margin: 0 auto;
+}
+
+.units {
+  cursor: pointer;
+  transition: ease-in-out 200ms;
+  font-size: 30px;
+}
+
+.units:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.details {
+  display: block;
+  padding: 4% 10% 10% 10%;
+  margin: 0 auto;
+}
+
+#icon {
+  display: block;
+  float: center;
+  max-width: 200px;
+  font-size: 80px;
+  padding: 0 0 0 40px;
+}
+
+.forecast {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 2;
+  padding: 0% 5% 10% 5%;
+  font-size: 18px;
+}
+
+.city-search-control {
+  border: 1px grey solid;
+  border-radius: 5px;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+}
+.search button {
+  color: #294349;
+  border: none;
+}
+
+#search-icon {
+  position: relative;
+  bottom: 30px;
+  left: 93%;
+  padding: 0;
+  margin: 0;
+  display: block;
+  background: transparent;
+}
+
+button#search-icon:hover {
+  color: #678a91;
+}
+
+button#current-location:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+#current-location {
+  display: block;
+  background: white solid;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 8px 20px;
+}
+
+#city {
+  text-align: center;
+  font-size: 65px;
+  line-height: 1;
+  padding: 20px 0 0 0;
+  margin-bottom: 0;
+}
+
+.results h2 {
+  text-align: center;
+  font-size: 25px;
+  padding: 0;
+  line-height: 1.2;
+}
+
+#weather {
+  text-align: left;
+  font-size: 24px;
+  line-height: 0;
+}
+#humidity,
+#wind {
+  text-align: left;
+  font-size: 18px;
+  line-height: 0;
+  font-style: italic;
+}
