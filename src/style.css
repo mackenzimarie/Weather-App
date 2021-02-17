@@ -2,7 +2,7 @@ body {
   display: block;
   max-width: 500px;
   margin: 0 auto;
-  border: black solid 1px;
+  border: none;
   box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.5);
   border-radius: 10px;
   padding: 0;
