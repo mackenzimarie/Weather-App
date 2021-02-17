@@ -158,3 +158,9 @@ button#current-location:hover {
   line-height: 0;
   font-style: italic;
 }
+
+#author {
+  color: black;
+  text-shadow: none;
+  font-size: 12px;
+}
