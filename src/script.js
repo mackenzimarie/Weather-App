@@ -1,6 +1,3 @@
-// //Day and Time
-
-//making time AMPM
 function formatAMPM(date) {
   var hours = date.getHours();
   var minutes = date.getMinutes();
@@ -11,8 +8,6 @@ function formatAMPM(date) {
   var ampm = hours + ":" + minutes + " " + ampm;
   return ampm;
 }
-
-//Temperature update
 
 function showAllWeather(response) {
   console.log(response);
