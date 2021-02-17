@@ -159,7 +159,7 @@ button#current-location:hover {
   font-style: italic;
 }
 
-#author {
+.author {
   color: black;
   text-shadow: none;
   font-size: 12px;
