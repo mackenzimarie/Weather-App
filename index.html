@@ -16,7 +16,7 @@
   </head>
   
   <body>
-    <div class="container">
+    <div class="container" id=background>
 
       <div class="search">
         <form>
@@ -33,7 +33,8 @@
                       autocomplete="off"
                       id="inputCity"
                   />
-                  <button id="search-icon"
+                  <button type=button 
+                  id="search-icon"
                       class="icon">
                       <i class="fa fa-search">
                       </i>
@@ -74,33 +75,34 @@
         </div>
         </div>
 
-        <div class="forecast">
+        <div class="forecast" >
 
-            <div class="row">
-                <div class="col-4">Friday</div>
-                <div class="col-4"><i class="fas fa-cloud"></i> Cloudy</div>
-                <div class="col-4">33˚ / 27˚</div>
+            <div class="row" id="forecast-day-one">
+                <div class="col-4"></div>
+                <div class="col-4"><i class="fas fa-cloud"></i></div>
+                <div class="col-4"></div>
             </div>
-            <div class="row">
-                <div class="col-4">Saturday</div>
-                <div class="col-4"><i class="far fa-snowflake"></i> Snow</div>
-                <div class="col-4">35˚ / 28˚</div>
+                <div class="row" id="forecast-day-two">
+                <div class="col-4"></div>
+                <div class="col-4"><i class="fas fa-cloud"></i></div>
+                <div class="col-4"></div>
             </div>
-            <div class="row">
-                <div class="col-4">Sunday</div>
-                <div class="col-4"><i class="far fa-snowflake"></i></i> Snow</div>
-                <div class="col-4">36˚ / 33˚</div>
+            <div class="row" id="forecast-day-three">
+                <div class="col-4"></div>
+                <div class="col-4"><i class="fas fa-cloud"></i></div>
+                <div class="col-4"></div>
             </div>
-            <div class="row">
-                <div class="col-4">Monday</div>
-                <div class="col-4"><i class="fas fa-snowflake"></i> Snow</div>
-                <div class="col-4">39˚ / 37˚</div>
+            <div class="row" id="forecast-day-four">
+                <div class="col-4"></div>
+                <div class="col-4"><i class="fas fa-cloud"></i></div>
+                <div class="col-4"></div>
             </div>
-            <div class="row">
-                <div class="col-4">Tuesday</div>
-                <div class="col-4"><i class="fas fa-cloud-rain"></i> Rain</div>
-                <div class="col-4">43˚ / 34˚</div>
+            <div class="row" id="forecast-day-five">
+                <div class="col-4"></div>
+                <div class="col-4"><i class="fas fa-cloud"></i></div>
+                <div class="col-4"></div>
             </div>
+
             <br>
             <button id="current-location">
                 Search Current Location

@@ -20,7 +20,61 @@ function showAllWeather(response) {
   let weather = document.querySelector("#weather");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
-  let icon = document.querySelector("#icon");
+  let atmosphere = [
+    "Mist",
+    "Smoke",
+    "Haze",
+    "Fog",
+    "Dust",
+    "Sand",
+    "Ash",
+    "Squall",
+    "Tornado",
+  ];
+
+  //  let icon = document.querySelector("#icon");
+
+  if (response.data.weather[0].main === "Clouds") {
+    document.getElementById("background").style.backgroundImage =
+      "url(src/backgrounds/cloud.jpg)";
+  }
+
+  if (response.data.weather[0].main === "Clear") {
+    document.getElementById("background").style.backgroundImage =
+      "url(src/backgrounds/clear.jpeg)";
+  }
+
+  if (response.data.weather[0].main === "Snow") {
+    document.getElementById("background").style.backgroundImage =
+      "url(src/backgrounds/snow.jpeg)";
+  }
+
+  if (
+    response.data.weather[0].main === "Rain" ||
+    response.data.weather[0].main === "Drizzle"
+  ) {
+    document.getElementById("background").style.backgroundImage =
+      "url(src/backgrounds/rain.jpeg)";
+  }
+
+  if (
+    response.data.weather[0].main === "Mist" ||
+    response.data.weather[0].main === "Smoke" ||
+    response.data.weather[0].main === "Haze" ||
+    response.data.weather[0].main === "Fog" ||
+    response.data.weather[0].main === "Dust" ||
+    response.data.weather[0].main === "Sand" ||
+    response.data.weather[0].main === "Ash" ||
+    response.data.weather[0].main === "Squall" ||
+    response.data.weather[0].main === "Tornado"
+  ) {
+    document.getElementById("background").style.backgroundImage =
+      "url(src/backgrounds/atmosphere.jpeg)";
+  }
+  if (response.data.weather[0].main === "Thunderstorm") {
+    document.getElementById("background").style.backgroundImage =
+      "url(src/backgrounds/thunderstorm.jpeg)";
+  }
 
   fahrenheitTemperature = response.data.main.temp;
 
@@ -29,12 +83,81 @@ function showAllWeather(response) {
   weather.innerHTML = response.data.weather[0].description;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind: ${response.data.main.humidity}mph`;
-  icon.setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
+  //icon.setAttribute(
+  //  "src",
+  //  `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  // );
 
   dayAndTime.innerHTML = `${day} ${formatAMPM(new Date())}`;
+}
+
+function showForecast(response) {
+  console.log(response.data);
+  let forecastElementOne = document.querySelector("#forecast-day-one");
+  let forecastDayOne = response.data.list[3];
+  let forecastElementTwo = document.querySelector("#forecast-day-two");
+  let forecastDayTwo = response.data.list[11];
+  let forecastElementThree = document.querySelector("#forecast-day-three");
+  let forecastDayThree = response.data.list[19];
+  let forecastElementFour = document.querySelector("#forecast-day-four");
+  let forecastDayFour = response.data.list[27];
+  let forecastElementFive = document.querySelector("#forecast-day-five");
+  let forecastDayFive = response.data.list[35];
+
+  forecastElementOne.innerHTML = `
+  <div class="row">
+    <div class="col-4">${days[now.getDay() + 1]}</div>
+    <div class="col-4">
+      <i class="fas fa-cloud"></i> ${forecastDayOne.weather[0].main}
+    </div>
+    <div class="col-4">${Math.round(
+      forecastDayOne.main.temp_max
+    )}˚ / ${Math.round(forecastDayOne.main.temp_min)}˚</div>
+  </div>`;
+
+  forecastElementTwo.innerHTML = `
+  <div class="row">
+    <div class="col-4">${days[now.getDay() + 2]}</div>
+    <div class="col-4">
+      <i class="fas fa-cloud"></i> ${forecastDayTwo.weather[0].main}
+    </div>
+    <div class="col-4">${Math.round(
+      forecastDayTwo.main.temp_max
+    )}˚ / ${Math.round(forecastDayTwo.main.temp_min)}˚</div>
+  </div>`;
+
+  forecastElementThree.innerHTML = `
+  <div class="row">
+    <div class="col-4">${days[now.getDay() + 3]}</div>
+    <div class="col-4">
+      <i class="fas fa-cloud"></i> ${forecastDayThree.weather[0].main}
+    </div>
+    <div class="col-4">${Math.round(
+      forecastDayThree.main.temp_max
+    )}˚ / ${Math.round(forecastDayThree.main.temp_min)}˚</div>
+  </div>`;
+
+  forecastElementFour.innerHTML = `
+  <div class="row">
+    <div class="col-4">${days[now.getDay() + 4]}</div>
+    <div class="col-4">
+      <i class="fas fa-cloud"></i> ${forecastDayFour.weather[0].main}
+    </div>
+    <div class="col-4">${Math.round(
+      forecastDayFour.main.temp_max
+    )}˚ / ${Math.round(forecastDayFour.main.temp_min)}˚</div>
+  </div>`;
+
+  forecastElementFive.innerHTML = `
+  <div class="row">
+    <div class="col-4">${days[now.getDay() + 5]}</div>
+    <div class="col-4">
+      <i class="fas fa-cloud"></i> ${forecastDayFive.weather[0].main}
+    </div>
+    <div class="col-4">${Math.round(
+      forecastDayFive.main.temp_max
+    )}˚ / ${Math.round(forecastDayFive.main.temp_min)}˚</div>
+  </div>`;
 }
 
 //Search for a city functions
@@ -45,6 +168,10 @@ function search(inputCity) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&units=${units}&appid=${apiKey}`;
 
   axios.get(apiUrl).then(showAllWeather);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${inputCity}&appid=${apiKey}&units=${units}`;
+
+  axios.get(apiUrl).then(showForecast);
 }
 
 function updateCity(event) {
@@ -97,6 +224,13 @@ let now = new Date();
 let hours = now.getHours();
 let minutes = now.getMinutes();
 let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
   "Sunday",
   "Monday",
   "Tuesday",
