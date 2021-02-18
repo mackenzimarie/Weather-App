@@ -184,3 +184,12 @@ h3 {
 .seperator {
   color: #678a91;
 }
+
+#forecast img {
+  max-width: 45px;
+}
+
+.row {
+  margin: 0 auto;
+  padding: 0;
+}

@@ -108,8 +108,12 @@ function showForecast(response) {
   forecastElementOne.innerHTML = `
   <div class="row">
     <div class="col-4">${days[now.getDay() + 1]}</div>
-    <div class="col-4">
-      <i class="fas fa-cloud"></i> ${forecastDayOne.weather[0].main}
+    <div class="col-4"> 
+        <img 
+        src="http://openweathermap.org/img/wn/${
+          forecastDayOne.weather[0].icon
+        }@2x.png"/>
+       ${forecastDayOne.weather[0].main}
     </div>
     <div class="col-4">${Math.round(
       forecastDayOne.main.temp_max
@@ -120,7 +124,11 @@ function showForecast(response) {
   <div class="row">
     <div class="col-4">${days[now.getDay() + 2]}</div>
     <div class="col-4">
-      <i class="fas fa-cloud"></i> ${forecastDayTwo.weather[0].main}
+              <img 
+        src="http://openweathermap.org/img/wn/${
+          forecastDayTwo.weather[0].icon
+        }@2x.png"/>
+ ${forecastDayTwo.weather[0].main}
     </div>
     <div class="col-4">${Math.round(
       forecastDayTwo.main.temp_max
@@ -131,7 +139,11 @@ function showForecast(response) {
   <div class="row">
     <div class="col-4">${days[now.getDay() + 3]}</div>
     <div class="col-4">
-      <i class="fas fa-cloud"></i> ${forecastDayThree.weather[0].main}
+              <img 
+        src="http://openweathermap.org/img/wn/${
+          forecastDayThree.weather[0].icon
+        }@2x.png"/>
+    ${forecastDayThree.weather[0].main}
     </div>
     <div class="col-4">${Math.round(
       forecastDayThree.main.temp_max
@@ -142,7 +154,12 @@ function showForecast(response) {
   <div class="row">
     <div class="col-4">${days[now.getDay() + 4]}</div>
     <div class="col-4">
-      <i class="fas fa-cloud"></i> ${forecastDayFour.weather[0].main}
+              <img 
+        src="http://openweathermap.org/img/wn/${
+          forecastDayFour.weather[0].icon
+        }@2x.png"/>
+
+     ${forecastDayFour.weather[0].main}
     </div>
     <div class="col-4">${Math.round(
       forecastDayFour.main.temp_max
@@ -153,7 +170,12 @@ function showForecast(response) {
   <div class="row">
     <div class="col-4">${days[now.getDay() + 5]}</div>
     <div class="col-4">
-      <i class="fas fa-cloud"></i> ${forecastDayFive.weather[0].main}
+              <img 
+        src="http://openweathermap.org/img/wn/${
+          forecastDayFive.weather[0].icon
+        }@2x.png"/>
+
+     ${forecastDayFive.weather[0].main}
     </div>
     <div class="col-4">${Math.round(
       forecastDayFive.main.temp_max
