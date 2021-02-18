@@ -14,7 +14,6 @@ function formatAMPM(date) {
 //Weather display functions
 
 function showAllWeather(response) {
-  console.log(response);
   let cityName = document.querySelector("#city");
   let temperature = document.querySelector("#temperature");
   let weather = document.querySelector("#weather");
@@ -92,18 +91,71 @@ function showAllWeather(response) {
 }
 
 function showForecast(response) {
-  console.log(response.data);
   let forecastElementOne = document.querySelector("#forecast-day-one");
   let forecastDayOne = response.data.list[3];
+  let dayOneIcon = forecastDayOne.weather[0].main;
   let forecastElementTwo = document.querySelector("#forecast-day-two");
   let forecastDayTwo = response.data.list[11];
+  let dayTwoIcon = forecastDayTwo.weather[0].main;
   let forecastElementThree = document.querySelector("#forecast-day-three");
   let forecastDayThree = response.data.list[19];
+  let dayThreeIcon = forecastDayThree.weather[0].main;
   let forecastElementFour = document.querySelector("#forecast-day-four");
   let forecastDayFour = response.data.list[27];
+  let dayFourIcon = forecastDayFour.weather[0].main;
+
   let forecastElementFive = document.querySelector("#forecast-day-five");
   let forecastDayFive = response.data.list[35];
-  let icon = document.querySelector(".forecasticon");
+  let dayFiveIcon = forecastDayFive.weather[0].icon;
+
+  let correctIcon = [
+    dayOneIcon,
+    dayTwoIcon,
+    dayThreeIcon,
+    dayFourIcon,
+    dayFiveIcon,
+  ];
+
+  console.log(correctIcon.values);
+
+  //let icon = document.querySelector(".forecasticon");
+
+  //   if (response.data.weather[0].main === "Clear") {
+  //     document.getElementById("background").style.backgroundImage =
+  //       "url(src/backgrounds/clear.jpeg)";
+  //   }
+
+  //   if (response.data.weather[0].main === "Snow") {
+  //     document.getElementById("background").style.backgroundImage =
+  //       "url(src/backgrounds/snow.jpeg)";
+  //   }
+
+  //   if (
+  //     response.data.weather[0].main === "Rain" ||
+  //     response.data.weather[0].main === "Drizzle"
+  //   ) {
+  //     document.getElementById("background").style.backgroundImage =
+  //       "url(src/backgrounds/rain.jpeg)";
+  //   }
+
+  //   if (
+  //     response.data.weather[0].main === "Mist" ||
+  //     response.data.weather[0].main === "Smoke" ||
+  //     response.data.weather[0].main === "Haze" ||
+  //     response.data.weather[0].main === "Fog" ||
+  //     response.data.weather[0].main === "Dust" ||
+  //     response.data.weather[0].main === "Sand" ||
+  //     response.data.weather[0].main === "Ash" ||
+  //     response.data.weather[0].main === "Squall" ||
+  //     response.data.weather[0].main === "Tornado"
+  //   ) {
+  //     document.getElementById("background").style.backgroundImage =
+  //       "url(src/backgrounds/atmosphere.jpeg)";
+  //   }
+  //   if (response.data.weather[0].main === "Thunderstorm") {
+  //     document.getElementById("background").style.backgroundImage =
+  //       "url(src/backgrounds/thunderstorm.jpeg)";
+  //   }
 
   forecastElementOne.innerHTML = `
   <div class="row">
