@@ -186,10 +186,15 @@ h3 {
 }
 
 #forecast img {
-  max-width: 45px;
+  max-height: 45px;
 }
 
 .row {
   margin: 0 auto;
   padding: 0;
+}
+
+#icon {
+  font-size: 100px;
+  text-align: center;
 }

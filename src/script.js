@@ -21,58 +21,53 @@ function showAllWeather(response) {
   let wind = document.querySelector("#wind");
   let icon = document.querySelector("#icon");
 
-  //let atmosphere = [
-  // "Mist",
-  // "Smoke",
-  // "Haze",
-  // "Fog",
-  // "Dust",
-  // "Sand",
-  // "Ash",
-  // "Squall",
-  // "Tornado",
-  //];
+  let atmosphere = [
+    "Mist",
+    "Smoke",
+    "Haze",
+    "Fog",
+    "Dust",
+    "Sand",
+    "Ash",
+    "Squall",
+    "Tornado",
+  ];
+
+  let rain = ["Rain", "Drizzle"];
 
   if (response.data.weather[0].main === "Clouds") {
     document.getElementById("background").style.backgroundImage =
       "url(src/backgrounds/cloud.jpg)";
+    icon.innerHTML = `<i class="fas fa-cloud"></i>`;
   }
 
   if (response.data.weather[0].main === "Clear") {
     document.getElementById("background").style.backgroundImage =
       "url(src/backgrounds/clear.jpeg)";
+    icon.innerHTML = `<i class="fas fa-sun"></i>`;
   }
 
   if (response.data.weather[0].main === "Snow") {
     document.getElementById("background").style.backgroundImage =
       "url(src/backgrounds/snow.jpeg)";
+    icon.innerHTML = `<i class="fas fa-snowflake"></i>`;
   }
 
-  if (
-    response.data.weather[0].main === "Rain" ||
-    response.data.weather[0].main === "Drizzle"
-  ) {
+  if (rain.includes(response.data.weather[0].main)) {
     document.getElementById("background").style.backgroundImage =
       "url(src/backgrounds/rain.jpeg)";
+    icon.innerHTML = `<i class="fas fa-cloud-showers-heavy"></i>`;
   }
 
-  if (
-    response.data.weather[0].main === "Mist" ||
-    response.data.weather[0].main === "Smoke" ||
-    response.data.weather[0].main === "Haze" ||
-    response.data.weather[0].main === "Fog" ||
-    response.data.weather[0].main === "Dust" ||
-    response.data.weather[0].main === "Sand" ||
-    response.data.weather[0].main === "Ash" ||
-    response.data.weather[0].main === "Squall" ||
-    response.data.weather[0].main === "Tornado"
-  ) {
+  if (atmosphere.includes(response.data.weather[0].main)) {
     document.getElementById("background").style.backgroundImage =
       "url(src/backgrounds/atmosphere.jpeg)";
+    icon.innerHTML = `<i class="fas fa-smog"></i>`;
   }
   if (response.data.weather[0].main === "Thunderstorm") {
     document.getElementById("background").style.backgroundImage =
       "url(src/backgrounds/thunderstorm.jpeg)";
+    icon.innerHTML = `<i class="fas fa-bolt"></i>`;
   }
 
   fahrenheitTemperature = response.data.main.temp;
@@ -103,10 +98,9 @@ function showForecast(response) {
   let forecastElementFour = document.querySelector("#forecast-day-four");
   let forecastDayFour = response.data.list[27];
   let dayFourIcon = forecastDayFour.weather[0].main;
-
   let forecastElementFive = document.querySelector("#forecast-day-five");
   let forecastDayFive = response.data.list[35];
-  let dayFiveIcon = forecastDayFive.weather[0].icon;
+  let dayFiveIcon = forecastDayFive.weather[0].main;
 
   let correctIcon = [
     dayOneIcon,
@@ -116,55 +110,37 @@ function showForecast(response) {
     dayFiveIcon,
   ];
 
-  console.log(correctIcon.values);
+  let atmosphere = [
+    "Mist",
+    "Smoke",
+    "Haze",
+    "Fog",
+    "Dust",
+    "Sand",
+    "Ash",
+    "Squall",
+    "Tornado",
+  ];
+
+  let rain = ["Rain", "Drizzle"];
+
+  let forecastIcon = document.querySelector(".forecasticon");
+
+  if (correctIcon === "Cloud") {
+    forecasticon.innerHTML = `<i class="fas fa-cloud"></i>`;
+  }
+
+  //if "cloud is equal to any of the correctIcon Array, then change icon to i class cloud etc
+
+  //if coorect icon is equal to "celear"
+  console.log(correctIcon);
 
   //let icon = document.querySelector(".forecasticon");
-
-  //   if (response.data.weather[0].main === "Clear") {
-  //     document.getElementById("background").style.backgroundImage =
-  //       "url(src/backgrounds/clear.jpeg)";
-  //   }
-
-  //   if (response.data.weather[0].main === "Snow") {
-  //     document.getElementById("background").style.backgroundImage =
-  //       "url(src/backgrounds/snow.jpeg)";
-  //   }
-
-  //   if (
-  //     response.data.weather[0].main === "Rain" ||
-  //     response.data.weather[0].main === "Drizzle"
-  //   ) {
-  //     document.getElementById("background").style.backgroundImage =
-  //       "url(src/backgrounds/rain.jpeg)";
-  //   }
-
-  //   if (
-  //     response.data.weather[0].main === "Mist" ||
-  //     response.data.weather[0].main === "Smoke" ||
-  //     response.data.weather[0].main === "Haze" ||
-  //     response.data.weather[0].main === "Fog" ||
-  //     response.data.weather[0].main === "Dust" ||
-  //     response.data.weather[0].main === "Sand" ||
-  //     response.data.weather[0].main === "Ash" ||
-  //     response.data.weather[0].main === "Squall" ||
-  //     response.data.weather[0].main === "Tornado"
-  //   ) {
-  //     document.getElementById("background").style.backgroundImage =
-  //       "url(src/backgrounds/atmosphere.jpeg)";
-  //   }
-  //   if (response.data.weather[0].main === "Thunderstorm") {
-  //     document.getElementById("background").style.backgroundImage =
-  //       "url(src/backgrounds/thunderstorm.jpeg)";
-  //   }
 
   forecastElementOne.innerHTML = `
   <div class="row">
     <div class="col-4">${days[now.getDay() + 1]}</div>
-    <div class="col-4"> 
-        <img 
-        src="http://openweathermap.org/img/wn/${
-          forecastDayOne.weather[0].icon
-        }@2x.png"/>
+    <div class="col-4">${forecastIcon}
        ${forecastDayOne.weather[0].main}
     </div>
     <div class="col-4">${Math.round(
@@ -354,3 +330,10 @@ dayAndTime.innerHTML = `${day} ${formatAMPM(new Date())}`;
 //Update current location upon load/reload
 
 navigator.geolocation.getCurrentPosition(updateCurrentPosition);
+
+// rain icon <i class="fas fa-cloud-showers-heavy"></i>
+//cloud icon <i class="fas fa-cloud"></i>
+//clear icon <i class="fas fa-sun"></i>
+//snow icon <i class="far fa-snowflake"></i>
+//atmosphere icon <i class="fas fa-smog"></i>
+//thunderstorm icon <i class="fas fa-bolt"></i>
