@@ -20,19 +20,19 @@ function showAllWeather(response) {
   let weather = document.querySelector("#weather");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
-  let atmosphere = [
-    "Mist",
-    "Smoke",
-    "Haze",
-    "Fog",
-    "Dust",
-    "Sand",
-    "Ash",
-    "Squall",
-    "Tornado",
-  ];
+  let icon = document.querySelector("#icon");
 
-  //  let icon = document.querySelector("#icon");
+  //let atmosphere = [
+  // "Mist",
+  // "Smoke",
+  // "Haze",
+  // "Fog",
+  // "Dust",
+  // "Sand",
+  // "Ash",
+  // "Squall",
+  // "Tornado",
+  //];
 
   if (response.data.weather[0].main === "Clouds") {
     document.getElementById("background").style.backgroundImage =
@@ -83,10 +83,10 @@ function showAllWeather(response) {
   weather.innerHTML = response.data.weather[0].description;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind: ${response.data.main.humidity}mph`;
-  //icon.setAttribute(
-  //  "src",
-  //  `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  // );
+  icon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 
   dayAndTime.innerHTML = `${day} ${formatAMPM(new Date())}`;
 }
@@ -103,6 +103,7 @@ function showForecast(response) {
   let forecastDayFour = response.data.list[27];
   let forecastElementFive = document.querySelector("#forecast-day-five");
   let forecastDayFive = response.data.list[35];
+  let icon = document.querySelector(".forecasticon");
 
   forecastElementOne.innerHTML = `
   <div class="row">
@@ -211,6 +212,10 @@ function updateCurrentPosition(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(showAllWeather);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
+
+  axios.get(apiUrl).then(showForecast);
 }
 
 function currentPositionSearch(event) {
