@@ -47,12 +47,29 @@ function updateCity(event) {
   search(inputCity);
 }
 
+function changeToC(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  fahrenheitLink.classList.remove("active");
+  celciusLink.classList.add("active");
+  let celciusTemperature = Math.round(((fahrenheitTemperature - 32) * 5) / 9);
+  temperatureElement.innerHTML = celciusTemperature;
+}
+
+function changeToF(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  fahrenheitLink.classList.add("active");
+  celciusLink.classList.remove("active");
+
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
 let searchBar = document.querySelector("form");
 searchBar.addEventListener("submit", updateCity);
 
 //current location
-
-function currentPositionSearch(position) {
+function updateCurrentPosition(position) {
   console.log(position.coords.latitude);
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -62,7 +79,10 @@ function currentPositionSearch(position) {
 
   axios.get(apiUrl).then(showAllWeather);
 }
-navigator.geolocation.getCurrentPosition(currentPositionSearch);
+
+function currentPositionSearch(event) {
+  navigator.geolocation.getCurrentPosition(updateCurrentPosition);
+}
 
 let currentLocationButton = document.querySelector("#current-location");
 currentLocationButton.addEventListener("click", currentPositionSearch);
@@ -89,26 +109,6 @@ let dayAndTime = document.querySelector("h2");
 dayAndTime.innerHTML = `${day} ${formatAMPM(new Date())}`;
 
 //change to celcius
-
-function changeToC(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  fahrenheitLink.classList.remove("active");
-  celciusLink.classList.add("active");
-  let celciusTemperature = Math.round(((fahrenheitTemperature - 32) * 5) / 9);
-  temperatureElement.innerHTML = celciusTemperature;
-}
-
-function changeToF(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  fahrenheitLink.classList.add("active");
-  celciusLink.classList.remove("active");
-
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-let fahrenheitTemperature = null;
 
 let celciusLink = document.querySelector("#celcius");
 celciusLink.addEventListener("click", changeToC);
