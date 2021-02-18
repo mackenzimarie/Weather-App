@@ -273,3 +273,5 @@ searchBar.addEventListener("submit", updateCity);
 dayAndTime.innerHTML = `${day} ${formatAMPM(new Date())}`;
 
 //////////
+
+navigator.geolocation.getCurrentPosition(updateCurrentPosition);
