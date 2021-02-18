@@ -1,3 +1,5 @@
+//Date/Time functions
+
 function formatAMPM(date) {
   var hours = date.getHours();
   var minutes = date.getMinutes();
@@ -8,6 +10,8 @@ function formatAMPM(date) {
   var ampm = hours + ":" + minutes + " " + ampm;
   return ampm;
 }
+
+//Weather display functions
 
 function showAllWeather(response) {
   console.log(response);
@@ -33,6 +37,8 @@ function showAllWeather(response) {
   dayAndTime.innerHTML = `${day} ${formatAMPM(new Date())}`;
 }
 
+//Search for a city functions
+
 function search(inputCity) {
   let apiKey = "4d45dfce26ce2dcefa1ba2028fecfb40";
   let units = "imperial";
@@ -46,6 +52,8 @@ function updateCity(event) {
   let inputCity = document.querySelector("#inputCity").value;
   search(inputCity);
 }
+
+//Change F/C functions
 
 function changeToC(event) {
   event.preventDefault();
@@ -65,10 +73,8 @@ function changeToF(event) {
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
-let searchBar = document.querySelector("form");
-searchBar.addEventListener("submit", updateCity);
+//Current location functions
 
-//current location
 function updateCurrentPosition(position) {
   console.log(position.coords.latitude);
   let lat = position.coords.latitude;
@@ -81,11 +87,9 @@ function updateCurrentPosition(position) {
 }
 
 function currentPositionSearch(event) {
+  event.preventDefault();
   navigator.geolocation.getCurrentPosition(updateCurrentPosition);
 }
-
-let currentLocationButton = document.querySelector("#current-location");
-currentLocationButton.addEventListener("click", currentPositionSearch);
 
 //Date and Time variables
 
@@ -106,12 +110,32 @@ let dayAndTime = document.querySelector("h2");
 
 //Form variables
 
-dayAndTime.innerHTML = `${day} ${formatAMPM(new Date())}`;
+let searchBar = document.querySelector("form");
 
-//change to celcius
+//Current location variables
 
-let celciusLink = document.querySelector("#celcius");
-celciusLink.addEventListener("click", changeToC);
+let currentLocationButton = document.querySelector("#current-location");
+
+//Change F/C variables
 
 let fahrenheitLink = document.querySelector("#fahrenheit");
+let celciusLink = document.querySelector("#celcius");
+
+//F/C event listeners
+
+celciusLink.addEventListener("click", changeToC);
 fahrenheitLink.addEventListener("click", changeToF);
+
+//Update current location event listeners
+
+currentLocationButton.addEventListener("click", currentPositionSearch);
+
+//Search for a city "submit" event listener
+
+searchBar.addEventListener("submit", updateCity);
+
+//Update date/time event upon load
+
+dayAndTime.innerHTML = `${day} ${formatAMPM(new Date())}`;
+
+//////////
