@@ -185,8 +185,8 @@ h3 {
   color: #678a91;
 }
 
-#forecast img {
-  max-height: 45px;
+#forecast i {
+  font-size: 40px;
 }
 
 .row {

@@ -122,12 +122,12 @@ function showForecast(response) {
     "Tornado",
   ];
 
-  let rain = ["Rain", "Drizzle"];
+  //let rain = ["Rain", "Drizzle"];
 
-  let forecastIcon = document.querySelector(".forecasticon");
+  let iconOne = document.querySelector("#iconone");
 
-  if (correctIcon === "Cloud") {
-    forecasticon.innerHTML = `<i class="fas fa-cloud"></i>`;
+  if (correctIcon.includes("Clouds")) {
+    iconOne.innerHTML = `<i class="fas fa-cloud"></i>`;
   }
 
   //if "cloud is equal to any of the correctIcon Array, then change icon to i class cloud etc
@@ -140,7 +140,7 @@ function showForecast(response) {
   forecastElementOne.innerHTML = `
   <div class="row">
     <div class="col-4">${days[now.getDay() + 1]}</div>
-    <div class="col-4">${forecastIcon}
+    <div class="col-4">${iconOne}
        ${forecastDayOne.weather[0].main}
     </div>
     <div class="col-4">${Math.round(
