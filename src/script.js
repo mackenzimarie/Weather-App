@@ -257,6 +257,10 @@ let searchBar = document.querySelector("form");
 
 let currentLocationButton = document.querySelector("#current-location");
 
+//Search city button
+
+let searchButton = document.querySelector("#searchIcon");
+
 //Change F/C variables
 
 let fahrenheitLink = document.querySelector("#fahrenheit");
@@ -274,6 +278,7 @@ currentLocationButton.addEventListener("click", currentPositionSearch);
 //Search for a city "submit" event listener
 
 searchBar.addEventListener("submit", updateCity);
+searchButton.addEventListener("click", updateCity);
 
 //Update date/time event upon load
 
