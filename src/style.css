@@ -156,6 +156,8 @@ button#current-location:hover {
   line-height: 0;
   text-transform: capitalize;
   font-weight: bold;
+  margin-right: 0;
+  padding-right: 0;
 }
 #humidity,
 #wind {
