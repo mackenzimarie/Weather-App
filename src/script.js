@@ -86,63 +86,33 @@ function showAllWeather(response) {
 }
 
 function showForecast(response) {
+  //forecast 1
   let forecastElementOne = document.querySelector("#forecast-day-one");
   let forecastDayOne = response.data.list[3];
   let dayOneIcon = forecastDayOne.weather[0].main;
+  //forecast 2
   let forecastElementTwo = document.querySelector("#forecast-day-two");
   let forecastDayTwo = response.data.list[11];
   let dayTwoIcon = forecastDayTwo.weather[0].main;
+  //forecast 3
   let forecastElementThree = document.querySelector("#forecast-day-three");
   let forecastDayThree = response.data.list[19];
   let dayThreeIcon = forecastDayThree.weather[0].main;
+  //forecast 4
   let forecastElementFour = document.querySelector("#forecast-day-four");
   let forecastDayFour = response.data.list[27];
   let dayFourIcon = forecastDayFour.weather[0].main;
+  //forecast 5
   let forecastElementFive = document.querySelector("#forecast-day-five");
   let forecastDayFive = response.data.list[35];
   let dayFiveIcon = forecastDayFive.weather[0].main;
-
-  let correctIcon = [
-    dayOneIcon,
-    dayTwoIcon,
-    dayThreeIcon,
-    dayFourIcon,
-    dayFiveIcon,
-  ];
-
-  let atmosphere = [
-    "Mist",
-    "Smoke",
-    "Haze",
-    "Fog",
-    "Dust",
-    "Sand",
-    "Ash",
-    "Squall",
-    "Tornado",
-  ];
-
-  //let rain = ["Rain", "Drizzle"];
-
-  let iconOne = document.querySelector("#iconone");
-
-  if (correctIcon.includes("Clouds")) {
-    iconOne.innerHTML = `<i class="fas fa-cloud"></i>`;
-  }
-
-  //if "cloud is equal to any of the correctIcon Array, then change icon to i class cloud etc
-
-  //if coorect icon is equal to "celear"
-  console.log(correctIcon);
 
   //let icon = document.querySelector(".forecasticon");
 
   forecastElementOne.innerHTML = `
   <div class="row">
     <div class="col-4">${days[now.getDay() + 1]}</div>
-    <div class="col-4">${iconOne}
-       ${forecastDayOne.weather[0].main}
-    </div>
+    <div class="col-4">${forecastDayOne.weather[0].main}</div>
     <div class="col-4">${Math.round(
       forecastDayOne.main.temp_max
     )}˚ / ${Math.round(forecastDayOne.main.temp_min)}˚</div>
@@ -152,10 +122,6 @@ function showForecast(response) {
   <div class="row">
     <div class="col-4">${days[now.getDay() + 2]}</div>
     <div class="col-4">
-              <img 
-        src="http://openweathermap.org/img/wn/${
-          forecastDayTwo.weather[0].icon
-        }@2x.png"/>
  ${forecastDayTwo.weather[0].main}
     </div>
     <div class="col-4">${Math.round(
@@ -167,10 +133,6 @@ function showForecast(response) {
   <div class="row">
     <div class="col-4">${days[now.getDay() + 3]}</div>
     <div class="col-4">
-              <img 
-        src="http://openweathermap.org/img/wn/${
-          forecastDayThree.weather[0].icon
-        }@2x.png"/>
     ${forecastDayThree.weather[0].main}
     </div>
     <div class="col-4">${Math.round(
@@ -182,11 +144,6 @@ function showForecast(response) {
   <div class="row">
     <div class="col-4">${days[now.getDay() + 4]}</div>
     <div class="col-4">
-              <img 
-        src="http://openweathermap.org/img/wn/${
-          forecastDayFour.weather[0].icon
-        }@2x.png"/>
-
      ${forecastDayFour.weather[0].main}
     </div>
     <div class="col-4">${Math.round(
@@ -198,11 +155,6 @@ function showForecast(response) {
   <div class="row">
     <div class="col-4">${days[now.getDay() + 5]}</div>
     <div class="col-4">
-              <img 
-        src="http://openweathermap.org/img/wn/${
-          forecastDayFive.weather[0].icon
-        }@2x.png"/>
-
      ${forecastDayFive.weather[0].main}
     </div>
     <div class="col-4">${Math.round(
@@ -330,10 +282,3 @@ dayAndTime.innerHTML = `${day} ${formatAMPM(new Date())}`;
 //Update current location upon load/reload
 
 navigator.geolocation.getCurrentPosition(updateCurrentPosition);
-
-// rain icon <i class="fas fa-cloud-showers-heavy"></i>
-//cloud icon <i class="fas fa-cloud"></i>
-//clear icon <i class="fas fa-sun"></i>
-//snow icon <i class="far fa-snowflake"></i>
-//atmosphere icon <i class="fas fa-smog"></i>
-//thunderstorm icon <i class="fas fa-bolt"></i>

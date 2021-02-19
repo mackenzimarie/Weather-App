@@ -198,3 +198,8 @@ h3 {
   font-size: 100px;
   text-align: center;
 }
+
+.svg {
+  fill: white;
+  font-size: 10px;
+}
