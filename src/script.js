@@ -259,7 +259,7 @@ let currentLocationButton = document.querySelector("#current-location");
 
 //Search city button
 
-let searchButton = document.querySelector("#searchIcon");
+let searchButton = document.querySelector("#search-icon");
 
 //Change F/C variables
 
