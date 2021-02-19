@@ -152,14 +152,15 @@ button#current-location:hover {
 
 #weather {
   text-align: left;
-  font-size: 23px;
+  font-size: 20px;
   line-height: 0;
   text-transform: capitalize;
+  font-weight: bold;
 }
 #humidity,
 #wind {
   text-align: left;
-  font-size: 19px;
+  font-size: 18px;
   line-height: 0;
   font-style: italic;
 }
@@ -197,9 +198,4 @@ h3 {
 #icon {
   font-size: 100px;
   text-align: center;
-}
-
-.svg {
-  fill: white;
-  font-size: 10px;
 }
